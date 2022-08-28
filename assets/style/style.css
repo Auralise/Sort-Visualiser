@@ -1,0 +1,107 @@
+:root {
+    /* bar and animation colours */
+    --active-color: rgb(211, 18, 18);
+    --bar-color: rgb(79, 79, 243);
+
+    /* header and menu colours */
+    --header-color: #444;
+    --header-hover-color: #555;
+
+    /* background colours and general pallete */
+    --site-background-color: #333;
+
+    /* text colours */
+    --text-color: #bbb;
+    --text-hover-color: #ccc;
+
+    /* transition and animation settings */
+    --menu-transition-time: 300ms;
+
+    /* formatting and layout standards */
+    --working-width: 65%;
+}
+
+
+* {
+    font-size: 15px;
+}
+
+header {
+    width: 100%;
+    background-color: var(--header-color);
+    color: var(--text-color);
+
+}
+
+
+h1 {
+    font-size: 2em;
+}
+
+.header-content {
+    width: var(--working-width);
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+}
+
+nav {
+    display: flex;
+    margin-left: auto;
+    align-items: center;
+}
+
+
+nav>a {
+    text-decoration: none;
+    color: var(--text-color);
+    padding: 1em;
+    
+    transition: var(--menu-transition-time);
+
+}
+
+nav>a:last-of-type {
+    margin-left: 50px;
+}
+
+nav>a:hover {
+    background-color: var(--header-hover-color);
+    color: var(--text-hover-color);
+    transition: var(--menu-transition-time);
+}
+
+body {
+    background-color: var(--site-background-color);
+}
+
+main>.instructions {
+    color: var(--text-color);
+    width: var(--working-width);
+    text-align: center;
+    padding: 1em;
+    width:auto;
+}
+
+main>.sort-container {
+    display: flex;
+    justify-content: center;
+    width: var(--working-width);
+    height: 90vh;
+
+    border: solid #000;
+    margin: 0 auto;
+
+}
+
+main>.sort-container>.bar {
+    height: 100px;
+    width: .5%;
+    background-color: var(--bar-color);
+    margin: 0 2px;
+
+}
+
+main>.sort-container>.active {
+    background-color: var(--active-color);
+}
