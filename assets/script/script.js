@@ -30,7 +30,7 @@ function createBars(arr) {
     for (let i = 0; i < arr.length; i++) {
         const newBar = document.createElement("div");
         newBar.className = 'bar';
-        // newBar.id = `${i}`;
+        newBar.id = `${i}`;
         newBar.style.height = `${arr[i]}%`;
         // newBar.style.order = `${i + 1}`
         newBar.setAttribute('data-value', arr[i]);
@@ -42,43 +42,46 @@ function createBars(arr) {
 async function  bubbleSort() {
     let elements = document.getElementsByClassName('bar');
     let parent = document.getElementById('sort-container');
-    let swapped = true;
+    let swapped = false;
+
+    let iter = 0;
 
     // wait function 
     //const wait = (ms) => new Promise(resolve => setTimeout(resolve,ms));
 
 
     do {
+        iter++;
+        swapped = false;
         for(let i = 0; i < elements.length - 1; i++)
         {
             let current = elements[i];
             let next = elements[i + 1];
-            swapped = false;
+            
 
             current.classList.add('active');
-            next.classList.add('compare');
+            //next.classList.add('compare');
 
-
-
+            console.log(`iter ${iter}: comparing i: ${i}: ${current.getAttribute('data-value')} and i+1: ${i+1}: ${next.getAttribute('data-value')}`);
             
-            if (current.getAttribute('data-value') > next.getAttribute('data-value') ){
+            if (parseInt(current.getAttribute('data-value')) > parseInt(next.getAttribute('data-value')) ){
 
-                console.log(`swap ${current} with ${next}`)
+               console.log (`Swapping`);
                 
                 //swap in array
-                // let temp = elements[i+1];
-                // elements[i + 1] = elements[i];
-                // elements[i] = temp;
+                let temp = elements[i+1];
+                elements[i + 1] = elements[i];
+                elements[i] = temp;
 
                 await swapElements(parent, current, next);
                 swapped = true;
-
-                
-
             } 
+            else {
+                await wait(interval);
+            }
 
             current.classList.remove('active');
-            next.classList.remove('compare');
+            //next.classList.remove('compare');
 
         }
     } while (swapped)
@@ -96,10 +99,10 @@ const wait = (ms) => new Promise(resolve => setTimeout(resolve,ms));
 
 //execute script
 clearSortDisplay();
-let randomSet = generateArray(25); //generate an array of size 150 
+let randomSet = generateArray(100); //generate an array of size n 
 //console.table(randomSet);
 createBars(randomSet);
 
-var interval = 100; // interval wait time in ms
+var interval = 10; // interval wait time in ms
 var bubbleSortBtn = document.querySelector('#bubble');
 bubbleSortBtn.addEventListener("click", bubbleSort);
