@@ -51,7 +51,7 @@ async function  bubbleSort() {
 
 
     do {
-        iter++;
+        //iter++;
         swapped = false;
         for(let i = 0; i < elements.length - 1; i++)
         {
@@ -62,11 +62,11 @@ async function  bubbleSort() {
             current.classList.add('active');
             //next.classList.add('compare');
 
-            console.log(`iter ${iter}: comparing i: ${i}: ${current.getAttribute('data-value')} and i+1: ${i+1}: ${next.getAttribute('data-value')}`);
+            //console.log(`iter ${iter}: comparing i: ${i}: ${current.getAttribute('data-value')} and i+1: ${i+1}: ${next.getAttribute('data-value')}`);
             
             if (parseInt(current.getAttribute('data-value')) > parseInt(next.getAttribute('data-value')) ){
 
-               console.log (`Swapping`);
+               //console.log (`Swapping`);
                 
                 //swap in array
                 let temp = elements[i+1];
