@@ -1,6 +1,7 @@
 :root {
     /* bar and animation colours */
     --active-color: rgb(211, 18, 18);
+    --compare-color: green;
     --bar-color: rgb(79, 79, 243);
 
     /* header and menu colours */
@@ -107,6 +108,10 @@ main>.sort-container>.bar {
 
 main>.sort-container>.active {
     background-color: var(--active-color);
+}
+
+main>.sort-container>.compare {
+    background-color: var(--compare-color);
 }
 
 /* for testing
