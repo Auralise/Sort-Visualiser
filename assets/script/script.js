@@ -16,17 +16,19 @@ function generateArray(size) {
 
 function clearSortDisplay() {
     let bars = document.getElementsByClassName('bar');
-    console.table(bars);
-    // iterate from the end of the array to avoid problems with array length
+    //console.table(bars);
+    // iterate backwards to remove all elements
     for (let i = (bars.length - 1); i >= 0; i--) {
         bars[i].remove();
     }
 }
 
 
-function createBars(arr) {
+function createBars(size) {
+    clearSortDisplay();
+    const arr = generateArray(size);
     const sortContainer = document.getElementById('sort-container');
-    console.log(sortContainer);
+    //console.log(sortContainer);
     for (let i = 0; i < arr.length; i++) {
         const newBar = document.createElement("div");
         newBar.className = 'bar';
@@ -99,10 +101,13 @@ const wait = (ms) => new Promise(resolve => setTimeout(resolve,ms));
 
 //execute script
 clearSortDisplay();
-let randomSet = generateArray(100); //generate an array of size n 
+ //generate an array of size n 
 //console.table(randomSet);
-createBars(randomSet);
+createBars(100);
 
 var interval = 10; // interval wait time in ms
 var bubbleSortBtn = document.querySelector('#bubble');
-bubbleSortBtn.addEventListener("click", bubbleSort);
+bubbleSortBtn.addEventListener('click', bubbleSort);
+
+var resetBtn = document.querySelector('#reset');
+resetBtn.addEventListener("click", () => (createBars(100)));
