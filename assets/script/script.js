@@ -4,11 +4,11 @@ function generateArray(size) {
     let arr = [];
 
     for (let i = 0; i < size; i++) {
-        //get value between 1 < n < 99 for ease of display purposes
-        arr.push(Math.floor(Math.random() * 999) + 1);
+        //get value between 1 < n < 999
+        arr.push(Math.floor(Math.random() * 999) + 10);
     }
 
-    //console.table(data.arr);
+    console.table(arr);
 
     return arr;
 }
@@ -25,7 +25,8 @@ function clearSortDisplay() {
 }
 
 
-function createBars(arr) {
+function createBars(bars) {
+    let arr = generateArray(bars)
     const sortContainer = document.getElementById('sort-container');
     //console.log(sortContainer);
     for (let i = 0; i < arr.length; i++) {
@@ -54,10 +55,7 @@ async function bubbleSort() {
 
 
     do {
-        if (abort === true) {
-            break;
-        }
-        
+
         // iter++; //Debug Counter
         swapped = false;
         for (let i = 0; i < elements.length - 1; i++) {
@@ -117,8 +115,8 @@ var abort = false;
 
 //execute script
 clearSortDisplay();
-//console.table(randomSet);
-createBars(generateArray(barNum)); // Generate an array of size n and use to create bars on the screen
+
+createBars(barNum); // Generate an array of size n and use to create bars on the screen
 
 var bubbleSortBtn = document.querySelector('#bubble');
 bubbleSortBtn.addEventListener("click", bubbleSort);
@@ -128,5 +126,5 @@ resetBtn.addEventListener('click', () => {
     abort = true;
     wait(100);
     clearSortDisplay();
-    createBars(generateArray(barNum));
+    createBars(barNum);
 })
